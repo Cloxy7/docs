@@ -4,10 +4,11 @@
   "theme": "mint",
 
   "colors": {
-    "primary": "#00E0FF",
-    "light": "#33ECFF",
-    "dark": "#0096A6"
-  },
+  "primary": "#007E7E",
+  "light": "#33ECFF",
+  "dark": "#005E5E"
+},
+
 
   "logo": {
     "light": "/logo/light.svg",
