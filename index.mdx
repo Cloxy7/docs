@@ -1,6 +1,6 @@
 Speech to text
 
-# **Streaming Speech - to - Text(STT)**
+# **Streaming Speech - to - Text (STT)**
 
 Waves Streaming STT provides low latency, real-time speech recognition over WebSockets. Send audio as small binary frames and receive partial transcripts instantly, followed by a final stabilized transcript at the end of each utterance.
 
@@ -47,6 +47,37 @@ Send this JSON immediately after opening the WebSocket.
 ```
 
 ## Streaming Audio Frames
+
+<CodeGroup>
+
+```json json
+import websocket
+import json
+import time
+
+API_KEY = "<YOUR_API_KEY>"
+WS_URL = "wss://waves-api.smallest.ai/api/v1/asr"
+
+def on_message(ws, message):
+    print("RECV:", message)
+```
+
+</CodeGroup>
+
+<Steps>
+  <Step title="Open the WebSocket" iconType="regular">
+    
+  </Step>
+  <Step title="Send the configuration message">
+    
+  </Step>
+  <Step title="Stream binary audio chunks (20–50 ms)">
+    
+  </Step>
+  <Step title="Close the socket after the final frame">
+    
+  </Step>
+</Steps>
 
 1. Open the WebSocket
 2. Send the configuration message
