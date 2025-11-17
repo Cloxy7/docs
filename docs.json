@@ -26,11 +26,25 @@
       }
     ]
   },
+
   "mdx": {
     "components": {
-      "h3": "<h3 style='color:#14B8FF; font-weight:600;'>{{children}}</h3>"
+      "h3": "<h3 style='color:#00C2C7; font-weight:600;'>{{children}}</h3>"
     }
   },
+
+  "styles": {
+    "sidebar": {
+      "activeLink": {
+        "color": "#00C2C7",
+        "background": "rgba(0, 194, 199, 0.12)"
+      },
+      "hover": {
+        "color": "#00C2C7"
+      }
+    }
+  },
+
   "footer": {
     "socials": {
       "x": "https://twitter.com/smallest_AI",
