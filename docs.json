@@ -3,9 +3,13 @@
   "name": "Waves Documentation",
   "theme": "mint",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#00E0FF",
+    "light": "#33ECFF",
+    "dark": "#0096A6"
+  },
+  "logo": {
+    "light": "/logo/light.svg",
+    "dark": "/logo/dark.svg"
   },
   "navigation": {
     "tabs": [
@@ -14,13 +18,18 @@
         "groups": [
           {
             "group": "What This Page Covers",
-            "pages": ["Streaming-STT"
-              
+            "pages": [
+              "streaming-stt"
             ]
           }
         ]
       }
     ]
+  },
+  "mdx": {
+    "components": {
+      "h3": "<h3 style='color:#00E0FF; font-weight:600;'>{{children}}</h3>"
+    }
   },
   "footer": {
     "socials": {
