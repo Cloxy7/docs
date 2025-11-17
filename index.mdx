@@ -1,24 +1,8 @@
-This is **very good**, and it is **almost ready**, but there are **three small issues** we should fix so it looks fully professional like a Waves/Deepgram/AssemblyAI doc:
+Speech to text
 
-1. The **top section is missing a clean title + short intro** (looks abrupt starting with “Speech to text”).
-2. The **Formatting** needs headings (`##`), not plain text lines.
-3. Code blocks must be wrapped in triple backticks (Mintlify won’t format Python/JSON properly otherwise).
-4. Lists must use Markdown bullets (`-`), not blank line spacing.
-5. The intro line “Speech to text” should be replaced by something more formal and consistent with Waves’ style.
-
-I will fix ALL formatting while keeping your exact content.
-
-Below is the **final corrected version** — clean, production-ready, fully Markdown-valid, and Mintlify-perfect.
-
----
-
-# Streaming Speech to Text
-
-## Waves Streaming STT
+# **Streaming Speech - to - Text(STT)**
 
 Waves Streaming STT provides low latency, real-time speech recognition over WebSockets. Send audio as small binary frames and receive partial transcripts instantly, followed by a final stabilized transcript at the end of each utterance.
-
----
 
 ## Endpoint
 
@@ -33,25 +17,21 @@ Authorization: Bearer <YOUR_API_KEY>
 Content-Type: application/json
 ```
 
----
-
 ## Key Features
 
 - Real-time partial and final transcripts
 - Voice Activity Detection for accurate turn segmentation
 - Sensitive data redaction (PCI, SSN, numeric redaction)
-- Multiple encodings: linear16, FLAC, mulaw, Opus
+- Multiple encodings: `linear16`, `FLAC`, `mulaw`, `Opus`
 - English + Indian language support (Hindi, Tamil, Telugu)
 - Automatic punctuation and optional diarization
 - Designed for ultra-low-latency streaming use cases
-
----
 
 ## Initial Configuration Message
 
 Send this JSON immediately after opening the WebSocket.
 
-```
+```json
 {
   "config": {
     "language": "en",
@@ -66,20 +46,16 @@ Send this JSON immediately after opening the WebSocket.
 }
 ```
 
----
-
 ## Streaming Audio Frames
 
-- Open the WebSocket
-- Send the configuration message
-- Stream binary audio chunks (20–50 ms)
-- Close the socket after the final frame
+1. Open the WebSocket
+2. Send the configuration message
+3. Stream binary audio chunks (20–50 ms)
+4. Close the socket after the final frame
 
----
+## Streaming Example
 
-## Python Streaming Example
-
-```
+```python
 import websocket
 import json
 import time
@@ -119,13 +95,11 @@ ws = websocket.WebSocketApp(
 ws.run_forever()
 ```
 
----
-
 ## Sample Responses
 
 **Partial Transcript**
 
-```
+```json
 {
   "type": "partial",
   "text": "this is exa"
@@ -134,7 +108,7 @@ ws.run_forever()
 
 **Refined Partial**
 
-```
+```json
 {
   "type": "partial",
   "text": "this is example te"
@@ -143,15 +117,13 @@ ws.run_forever()
 
 **Final Transcript**
 
-```
+```json
 {
   "type": "final",
   "text": "this is example text",
   "confidence": 0.96
 }
 ```
-
----
 
 ## Best Practices
 
@@ -161,18 +133,8 @@ ws.run_forever()
 - Enable redaction when handling sensitive speech
 - Reconnect periodically during long-running sessions
 
----
-
 ### Build more with Waves
 
 Now that you have integrated real-time speech recognition, explore the rest of the Waves platform to unlock natural-sounding Text to Speech, voice cloning, and high-performance speech workflows.
 
 ---
-
-### This version is clean, industry-style, minimal, and approved for Mintlify.
-
-If you want, I can now:
-
-- optimize spacing so it visually fits better on one Mintlify page
-- add the page to your `docs.json`
-- adjust tone to match _exactly_ the Smallest AI documentation style (even stricter)
