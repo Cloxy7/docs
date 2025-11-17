@@ -2,11 +2,18 @@
   "$schema": "https://mintlify.com/docs.json",
   "name": "Waves Docs",
   "theme": "mint",
+
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#00A3A3",
+    "light": "#00C2C2",
+    "dark": "#008080"
   },
+
+  "font": {
+    "body": "Inter",
+    "heading": "Inter"
+  },
+
   "navigation": {
     "tabs": [
       {
@@ -22,6 +29,7 @@
       }
     ]
   },
+
   "footer": {
     "socials": {
       "x": "https://twitter.com/smallest_AI",
