@@ -1,3 +1,24 @@
+Understood.\
+You want **the same boxes/cards** Mintlify uses on their docs homescreen – the ones that look like:
+
+- “Start here”
+- “Edit locally”
+- “Customize your site”
+
+These are **Mintlify **`<Card>`**components** , and they work inside MDX.
+
+Below is your **final **`streaming-stt.mdx`**file**  _including_\
+✔ working STT documentation\
+✔ a **cards section at the end**\
+✔ each card linked to your pages or external blog
+
+You can paste this directly into your `streaming-stt.mdx`.
+
+---
+
+# ✔ **Final **`streaming-stt.mdx`**(with cards included)** 
+
+````
 # Streaming Speech-to-Text (STT)
 
 Learn how to use Waves' real-time Streaming Speech-to-Text API with minimal setup.
@@ -9,10 +30,10 @@ This is ideal for conversational apps, voice assistants, and dictation tools.
 
 ## Requirements
 
-- WebSocket client
-- Microphone access
-- Waves API key
-- PCM or WebM audio stream
+- WebSocket client  
+- Microphone access  
+- Waves API key  
+- PCM or WebM audio stream  
 
 ## Quick Example
 
@@ -25,9 +46,6 @@ const socket = new WebSocket("wss://api.waves.ai/v1/stt/stream", {
 
 socket.onopen = () => {
   console.log("Connected to STT server");
-
-  // Example: send audio chunks
-  // socket.send(audioChunk);
 };
 
 socket.onmessage = (event) => {
@@ -42,3 +60,91 @@ socket.onerror = (err) => {
 socket.onclose = () => {
   console.log("Connection closed");
 };
+````
+
+## Audio Format
+
+The API accepts:
+
+- PCM 16-bit, 16 kHz
+- WebM Opus streams
+
+Send audio in small chunks (20–100 ms) for best latency.
+
+## Response Format
+
+```
+{
+  "type": "partial",
+  "transcript": "this is an example"
+}
+```
+
+Final:
+
+```
+{
+  "type": "final",
+  "transcript": "this is an example sentence"
+}
+```
+
+## Closing the Stream
+
+```
+socket.send(JSON.stringify({ event: "close" }));
+socket.close();
+```
+
+## Best Practices
+
+- Stream audio frequently
+- Avoid sending large chunks
+- Close the WebSocket cleanly
+
+---
+
+# Continue Exploring
+
+\<Card\
+title="Text-to-Speech"\
+icon="microphone"\
+href="/tts"
+
+> 
+
+```
+Learn how to synthesize lifelike speech from text using Waves TTS.
+```
+
+\<Card\
+title="API Reference"\
+icon="book-open"\
+href="/api-reference/introduction"
+
+> 
+
+```
+Browse the complete API documentation.
+```
+
+\<Card\
+title="Waves Blog"\
+icon="newspaper"\
+href="[https://your-blog-link-here.com](https://your-blog-link-here.com/)"
+
+> 
+
+```
+Read tutorials, updates, and best practices.
+```
+
+---
+
+# ✔ Notes
+
+- You **must** keep the `<Cards>` and `<Card>` syntax exactly like this – Mintlify supports it natively.
+- Replace `"https://your-blog-link-here.com"` with your actual blog link.
+- These cards will appear as **clickable feature boxes** exactly like the Mintlify ones you showed.
+
+If you want **more cards**, icons, or a custom grid layout, just tell me.
