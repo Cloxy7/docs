@@ -30,18 +30,23 @@
 
   "mdx": {
     "components": {
-      "h3": "<h3 style='color:#02696A; font-weight:600;'>{{children}}</h3>"
+      "h3": "<h3 style='color:#007E7E; font-weight:600;'>{{children}}</h3>"
     }
   },
 
   "styles": {
     "sidebar": {
       "activeLink": {
-        "color": "#02696A",
-        "background": "rgba(2, 105, 106, 0.12)"
+        "color": "#007E7E",
+        "background": "rgba(0, 126, 126, 0.12)"
       },
       "hover": {
-        "color": "#02696A"
+        "color": "#007E7E"
+      }
+    },
+    "toc": {
+      "activeLink": {
+        "color": "#007E7E"
       }
     }
   },
