@@ -1,5 +1,44 @@
----
-title: 'New file'
-description: 'Description of your new file.'
----
+# Streaming Speech-to-Text (STT)
 
+Learn how to use Waves' real-time Streaming Speech-to-Text API with minimal setup.
+
+## Overview
+
+The Streaming STT API lets you send live audio and receive partial or final transcripts in real time.  
+This is ideal for conversational apps, voice assistants, and dictation tools.
+
+## Requirements
+
+- WebSocket client
+- Microphone access
+- Waves API key
+- PCM or WebM audio stream
+
+## Quick Example
+
+```javascript
+const socket = new WebSocket("wss://api.waves.ai/v1/stt/stream", {
+  headers: {
+    Authorization: "Bearer YOUR_API_KEY"
+  }
+});
+
+socket.onopen = () => {
+  console.log("Connected to STT server");
+
+  // Example: send audio chunks
+  // socket.send(audioChunk);
+};
+
+socket.onmessage = (event) => {
+  const data = JSON.parse(event.data);
+  console.log("Transcript:", data.transcript);
+};
+
+socket.onerror = (err) => {
+  console.error("WebSocket error:", err);
+};
+
+socket.onclose = () => {
+  console.log("Connection closed");
+};
