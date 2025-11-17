@@ -4,16 +4,10 @@
   "theme": "mint",
 
   "colors": {
-  "primary": "#007E7E",
-  "light": "#33ECFF",
-  "dark": "#005E5E"
-},
-
-
-  "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
+    "primary": "#007E7E"
   },
+
+  "css": ["custom.css"],
 
   "navigation": {
     "tabs": [
@@ -27,29 +21,6 @@
         ]
       }
     ]
-  },
-
-  "mdx": {
-    "components": {
-      "h3": "<h3 style='color:#007E7E; font-weight:600;'>{{children}}</h3>"
-    }
-  },
-
-  "styles": {
-    "sidebar": {
-      "activeLink": {
-        "color": "#007E7E",
-        "background": "rgba(0, 126, 126, 0.12)"
-      },
-      "hover": {
-        "color": "#007E7E"
-      }
-    },
-    "toc": {
-      "activeLink": {
-        "color": "#007E7E"
-      }
-    }
   },
 
   "footer": {
