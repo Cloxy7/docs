@@ -21,9 +21,7 @@
         "groups": [
           {
             "group": "What This Page Covers",
-            "pages": [
-              "streaming-stt"
-            ]
+            "pages": ["streaming-stt"]
           }
         ]
       }
@@ -32,18 +30,18 @@
 
   "mdx": {
     "components": {
-      "h3": "<h3 style='color:#026D6E; font-weight:600;'>{{children}}</h3>"
+      "h3": "<h3 style='color:#02696A; font-weight:600;'>{{children}}</h3>"
     }
   },
 
   "styles": {
     "sidebar": {
       "activeLink": {
-        "color": "#026D6E",
-        "background": "rgba(2, 109, 110, 0.12)"
+        "color": "#02696A",
+        "background": "rgba(2, 105, 106, 0.12)"
       },
       "hover": {
-        "color": "#026D6E"
+        "color": "#02696A"
       }
     }
   },
