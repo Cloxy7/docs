@@ -31,7 +31,9 @@ Content-Type: application/json
 
 Send this JSON immediately after opening the WebSocket.
 
-```json
+<CodeGroup>
+
+```json json
 {
   "config": {
     "language": "en",
@@ -46,23 +48,9 @@ Send this JSON immediately after opening the WebSocket.
 }
 ```
 
-## Streaming Audio Frames
-
-<CodeGroup>
-
-```json json
-import websocket
-import json
-import time
-
-API_KEY = "<YOUR_API_KEY>"
-WS_URL = "wss://waves-api.smallest.ai/api/v1/asr"
-
-def on_message(ws, message):
-    print("RECV:", message)
-```
-
 </CodeGroup>
+
+## Streaming Audio Frames
 
 <Steps>
   <Step title="Open the WebSocket" iconType="regular">
@@ -79,14 +67,11 @@ def on_message(ws, message):
   </Step>
 </Steps>
 
-1. Open the WebSocket
-2. Send the configuration message
-3. Stream binary audio chunks (20–50 ms)
-4. Close the socket after the final frame
-
 ## Streaming Example
 
-```python
+<CodeGroup>
+
+```python python
 import websocket
 import json
 import time
@@ -126,35 +111,49 @@ ws = websocket.WebSocketApp(
 ws.run_forever()
 ```
 
+</CodeGroup>
+
 ## Sample Responses
 
 **Partial Transcript**
 
-```json
+<CodeGroup>
+
+```json json
 {
   "type": "partial",
   "text": "this is exa"
 }
 ```
 
+</CodeGroup>
+
 **Refined Partial**
 
-```json
+<CodeGroup>
+
+```json json
 {
   "type": "partial",
   "text": "this is example te"
 }
 ```
 
+</CodeGroup>
+
 **Final Transcript**
 
-```json
+<CodeGroup>
+
+```json json
 {
   "type": "final",
   "text": "this is example text",
   "confidence": 0.96
 }
 ```
+
+</CodeGroup>
 
 ## Best Practices
 
@@ -164,8 +163,6 @@ ws.run_forever()
 - Enable redaction when handling sensitive speech
 - Reconnect periodically during long-running sessions
 
-### Build more with Waves
+## Build more with Waves
 
 Now that you have integrated real-time speech recognition, explore the rest of the Waves platform to unlock natural-sounding Text to Speech, voice cloning, and high-performance speech workflows.
-
----
