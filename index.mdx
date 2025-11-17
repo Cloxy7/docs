@@ -1,3 +1,154 @@
-import { Redirect } from "mintlify/components";
+---
+title: "SST"
+description: "Stream"
+---
 
-<Redirect href="/streaming-stt" /\>
+### Replace the file with the full streaming documentation:
+
+````
+# Waves Streaming Speech to Text (STT)
+
+Waves Streaming STT provides low-latency, real-time speech recognition over WebSockets.  
+Send audio frames and receive partial + final transcripts instantly.
+
+## Endpoint
+
+```txt
+wss://waves-api.smallest.ai/api/v1/asr
+````
+
+## Required Headers
+
+- Authorization: Bearer YOUR_API_KEY
+- Content-Type: application/json
+
+# Configuration
+
+```
+{
+  "config": {
+    "language": "en",
+    "encoding": "linear16",
+    "sample_rate": 16000,
+    "enable_partial_results": true,
+    "redaction": {
+      "enable_numeric_redaction": false,
+      "enable_pci_redaction": false
+    }
+  }
+}
+```
+
+---
+
+# Python Streaming Example
+
+```
+import websocket
+import json
+import time
+
+API_KEY = "<YOUR_API_KEY>"
+WS_URL = "wss://waves-api.smallest.ai/api/v1/asr"
+
+def on_message(ws, message):
+    print("RECV:", message)
+
+def on_open(ws):
+    config = {
+        "config": {
+            "language": "en",
+            "encoding": "linear16",
+            "sample_rate": 16000,
+            "enable_partial_results": True
+        }
+    }
+    ws.send(json.dumps(config))
+
+    with open("audio.raw", "rb") as audio:
+        while chunk := audio.read(3200):
+            ws.send(chunk, opcode=websocket.ABNF.OPCODE_BINARY)
+            time.sleep(0.04)
+
+    ws.close()
+
+headers = [f"Authorization: Bearer {API_KEY}"]
+
+ws = websocket.WebSocketApp(
+    WS_URL,
+    header=headers,
+    on_message=on_message
+)
+
+ws.run_forever()
+```
+
+---
+
+# Sample Responses
+
+### Partial Transcript
+
+```
+{
+  "type": "partial",
+  "text": "this is exa"
+}
+```
+
+### Refined Partial
+
+```
+{
+  "type": "partial",
+  "text": "this is example te"
+}
+```
+
+### Final Transcript
+
+```
+{
+  "type": "final",
+  "text": "this is example text",
+  "confidence": 0.96
+}
+```
+
+---
+
+# Best Practices
+
+- Use 20–50 ms audio chunks
+- Keep sample rate consistent
+- Use partial results for UI updates
+- Use final results for storage
+- Enable redaction for sensitive audio
+
+---
+
+# Explore More Documentation
+
+```
+<CardGroup cols={2}>
+
+  <Card 
+    title="Text to Speech"
+    icon="microphone"
+    href="/text-to-speech"
+  >
+    Learn how to synthesize high-quality speech using the Waves TTS API.
+  </Card>
+
+  <Card 
+    title="Voice Cloning"
+    icon="user"
+    href="/voice-cloning"
+  >
+    Clone and deploy custom voices using the Waves cloning workflow.
+  </Card>
+
+</CardGroup>
+```
+
+---
